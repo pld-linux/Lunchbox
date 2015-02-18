@@ -1,0 +1,34 @@
+--- Lunchbox-1.10.0/CMake/common/TargetHooks.cmake.orig	2014-10-02 12:07:38.000000000 +0200
++++ Lunchbox-1.10.0/CMake/common/TargetHooks.cmake	2015-02-18 17:06:08.678295749 +0100
+@@ -4,9 +4,7 @@
+ # multiple subprojects are built in a single go, the properties are unique per project
+ 
+ include(CMakeParseArguments)
+-include(clangcheckTargets)
+ include(CppcheckTargets)
+-include(CpplintTargets)
+ 
+ set(ALL_DEP_TARGETS "")
+ set(ALL_LIB_TARGETS "")
+@@ -19,10 +17,7 @@
+   set_property(GLOBAL PROPERTY ADD_EXE_MACRO_DEFINED "1")
+   macro(add_executable _target)
+     _add_executable(${_target} ${ARGN})
+-    add_clangcheck(${_target})
+     add_cppcheck(${_target} POSSIBLE_ERROR FAIL_ON_WARNINGS EXCLUDE_QT_MOC_FILES)
+-    add_cpplint(${_target} CATEGORY_FILTER_OUT readability/streams
+-      EXCLUDE_PATTERN ".*moc_.*\\.cxx|Buildyard/Build")
+     set_property(GLOBAL APPEND PROPERTY ${PROJECT_NAME}_ALL_DEP_TARGETS ${_target})
+   endmacro()
+ endif()
+@@ -33,10 +28,7 @@
+   set_property(GLOBAL PROPERTY ADD_LIBRARY_MACRO_DEFINED "1")
+   macro(add_library _target)
+     _add_library(${_target} ${ARGN})
+-    add_clangcheck(${_target})
+     add_cppcheck(${_target} POSSIBLE_ERROR FAIL_ON_WARNINGS EXCLUDE_QT_MOC_FILES)
+-    add_cpplint(${_target} CATEGORY_FILTER_OUT readability/streams
+-      EXCLUDE_PATTERN ".*moc_.*\\.cxx|Buildyard/Build")
+ 
+     # ignore IMPORTED add_library from finders (e.g. Qt)
+     cmake_parse_arguments(_arg "IMPORTED" "" "" ${ARGN})

@@ -8,13 +8,15 @@ Summary:	Lunchbox - C++ library for multi-threading programming
 Summary(pl.UTF-8):	Lunchbox - biblioteka C++ do programowania wielowątkowego
 Name:		Lunchbox
 Version:	1.10.0
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	https://github.com/Eyescale/Lunchbox/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	3e01c3a2ddeeb7b3682e88092831d5a5
 Source1:	https://github.com/Eyescale/CMake/archive/139ce7d/Eyescale-CMake-139ce7d.tar.gz
 # Source1-md5:	4a6abcd9e0fc417528a8ca68a97e65eb
+Patch0:		disable-broken-cmakefiles.patch
+Patch1:		boost-1.57.0.patch
 URL:		http://pogl.wordpress.com/category/lunchbox/
 BuildRequires:	avahi-devel
 BuildRequires:	boost-devel >= 1.41.0
@@ -78,6 +80,9 @@ Dokumentacja API biblioteki Lunchbox.
 
 %{__mv} CMake-* CMake/common
 %{__rm} .gitexternals
+
+%patch0 -p1
+%patch1 -p1
 
 %build
 install -d build
