@@ -3,12 +3,12 @@
 %bcond_without	apidocs		# do not build and package API docs
 %bcond_with	mpi		# MPI support
 %bcond_with	skv		# SKV (Scalable Key-Value Store) support
-#
+
 Summary:	Lunchbox - C++ library for multi-threading programming
 Summary(pl.UTF-8):	Lunchbox - biblioteka C++ do programowania wielowątkowego
 Name:		Lunchbox
 Version:	1.10.0
-Release:	5
+Release:	6
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	https://github.com/Eyescale/Lunchbox/archive/%{version}/%{name}-%{version}.tar.gz
@@ -68,6 +68,9 @@ Pliki nagłówkowe biblioteki Lunchbox.
 Summary:	Lunchbox API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki Lunchbox
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API documentation for Lunchbox library.
