@@ -7,18 +7,15 @@
 Summary:	Lunchbox - C++ library for multi-threading programming
 Summary(pl.UTF-8):	Lunchbox - biblioteka C++ do programowania wielowątkowego
 Name:		Lunchbox
-Version:	1.10.0
-Release:	7
+Version:	1.13.0
+Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	https://github.com/Eyescale/Lunchbox/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	3e01c3a2ddeeb7b3682e88092831d5a5
-Source1:	https://github.com/Eyescale/CMake/archive/139ce7d/Eyescale-CMake-139ce7d.tar.gz
-# Source1-md5:	4a6abcd9e0fc417528a8ca68a97e65eb
-Patch0:		disable-broken-cmakefiles.patch
-Patch1:		boost-1.57.0.patch
+# Source0-md5:	f782452db284a2e4e4fec687f95dfd30
 Patch2:		cxx.patch
 URL:		http://pogl.wordpress.com/category/lunchbox/
+BuildRequires:	Eyescale-CMake >= 2016.04
 BuildRequires:	avahi-devel
 BuildRequires:	boost-devel >= 1.41.0
 BuildRequires:	cmake >= 2.8
@@ -80,13 +77,11 @@ API documentation for Lunchbox library.
 Dokumentacja API biblioteki Lunchbox.
 
 %prep
-%setup -q -a1
+%setup -q
 
-%{__mv} CMake-* CMake/common
+ln -s %{_datadir}/Eyescale-CMake CMake/common
 %{__rm} .gitexternals
 
-%patch0 -p1
-%patch1 -p1
 %patch2 -p1
 
 %build
@@ -118,15 +113,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ACKNOWLEDGEMENTS.txt AUTHORS.txt CHANGES.txt LICENSE.txt README.md doc/RelNotes.md
+%doc ACKNOWLEDGEMENTS.txt AUTHORS.txt CHANGES.txt LICENSE.txt README.md doc/Changelog.md
 %attr(755,root,root) %{_libdir}/libLunchbox.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libLunchbox.so.3
+%attr(755,root,root) %ghost %{_libdir}/libLunchbox.so.6
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libLunchbox.so
 %{_includedir}/lunchbox
-%{_pkgconfigdir}/Lunchbox.pc
 %dir %{_datadir}/Lunchbox
 %{_datadir}/Lunchbox/CMake
 
