@@ -1,13 +1,12 @@
---- Lunchbox-1.10.0/tests/refPtr.cpp~	2014-10-09 10:14:54.000000000 +0000
-+++ Lunchbox-1.10.0/tests/refPtr.cpp	2016-05-24 19:29:04.438092680 +0000
-@@ -38,9 +38,9 @@
+--- Lunchbox-1.17.0/tests/refPtr.cpp.orig	2019-05-26 08:38:17.065749629 +0200
++++ Lunchbox-1.17.0/tests/refPtr.cpp	2019-05-26 08:39:27.702033626 +0200
+@@ -35,8 +35,8 @@
  {
  public:
      Foo() {}
-+    virtual ~Foo() {}
- 
- private:
--    virtual ~Foo() {}
- 
+-private:
+     virtual ~Foo() {}
++private:
      friend class boost::serialization::access;
-     template< class Archive > void serialize( Archive&, unsigned int ) {}
+     template <class Archive>
+     void serialize(Archive&, unsigned int)
