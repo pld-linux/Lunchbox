@@ -63,9 +63,7 @@ Pliki nagłówkowe biblioteki Lunchbox.
 Summary:	Lunchbox API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki Lunchbox
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for Lunchbox library.
