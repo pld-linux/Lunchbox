@@ -7,7 +7,7 @@ Summary:	Lunchbox - C++ library for multi-threading programming
 Summary(pl.UTF-8):	Lunchbox - biblioteka C++ do programowania wielowątkowego
 Name:		Lunchbox
 Version:	1.17.0
-Release:	5
+Release:	6
 License:	LGPL v2.1
 Group:		Libraries
 #Source0Download: https://github.com/Eyescale/Lunchbox/releases
