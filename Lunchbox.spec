@@ -13,7 +13,8 @@ Group:		Libraries
 #Source0Download: https://github.com/Eyescale/Lunchbox/releases
 Source0:	https://github.com/Eyescale/Lunchbox/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	76bcd79003c9b9d58d5f772cfdd812c7
-Patch2:		cxx.patch
+Patch0:		cxx.patch
+Patch1:		nanosleep.patch
 URL:		http://pogl.wordpress.com/category/lunchbox/
 BuildRequires:	Eyescale-CMake >= 2018.02
 BuildRequires:	Servus-devel >= 1.5.0
@@ -77,7 +78,8 @@ Dokumentacja API biblioteki Lunchbox.
 rmdir CMake/common
 ln -s %{_datadir}/Eyescale-CMake CMake/common
 
-%patch2 -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 install -d build
