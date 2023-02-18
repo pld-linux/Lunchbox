@@ -27,6 +27,7 @@ BuildRequires:	hwloc-devel < 2
 BuildRequires:	libstdc++-devel
 %{?with_mpi:BuildRequires:	mpi-devel}
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.605
 Requires:	Servus >= 1.5.0
 Requires:	hwloc-libs >= 1.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
